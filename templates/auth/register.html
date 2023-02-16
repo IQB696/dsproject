@@ -1,0 +1,39 @@
+{% extends 'base-page.html' %}
+{% load static %}
+
+{% block title %}
+	Home page
+{% endblock title %}
+
+{% block container %}
+ <br><br>
+        <div class="container py-5">
+            <div class="login-page">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="mb-4 box box-login">
+                            <form method="post" action="{% url 'register' %}">
+                                {% csrf_token %}
+                                <h3 class="title">Register</h3>
+                                {% for field in user_form %}
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-4">
+                                        <span style="color: red">{{ field.errors }}</span>
+                                        {{ field.label_tag }}
+                                        {{ field }}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <div class="row">
+                                    <div class="text-left col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between align-items-center">
+                                        <button type="submit" class="btn rounded btn-secondary" >Register</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<br><br>
+{% endblock container %}
